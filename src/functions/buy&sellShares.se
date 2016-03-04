@@ -440,3 +440,14 @@ def sellCompleteSets(branch, market, amount):
     
 macro fee_percent($market_fee, $price, $amount, $cumScale):
     4 * $market_fee * $price / (2**64*$cumScale) * (2**64-$price/$cumScale) / 2**64
+    
+#direct short implementation in progress
+def directShort(buyOrderID, amount): 
+    tradeInfo = TRADES.get_trade(buyOrderID)
+    #check that the buyOrderID is valid
+    if (!tradeInfo) : 
+        return(-1)
+    
+    #get max shares to short: this is the minimum of buyOrderID amount or the amount you want to short. 
+    
+    
