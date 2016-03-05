@@ -449,5 +449,11 @@ def directShort(buyOrderID, amount):
         return(-1)
     
     #get max shares to short: this is the minimum of buyOrderID amount or the amount you want to short. 
+    if (TRADES.get_amount(buyOrderID) < amount):
+        amtShort = TRADES.get_amount(buyOrderID)
+    else: 
+        amtShort = amount;
     
+    #check you have sufficient funds to short 
+    if (
     
