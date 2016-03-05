@@ -455,5 +455,8 @@ def directShort(buyOrderID, amount):
         amtShort = amount;
     
     #check you have sufficient funds to short 
-    if (
+    if ( CASH.balance(msg.sender) < amtShort - amtShort*tradeInfo.get_price(buyOrderID) ):
+        return(-2)
+    
+        
     
