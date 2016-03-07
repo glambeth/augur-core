@@ -477,6 +477,7 @@ def directShort(buyOrderID, amount):
         if (its the one you need to short): 
             continue
         MARKETS.modifyShares(tradeInfo[2], i, amtShort)
+        #what is branch
         MARKETS.modifyParticipantShares(branch, tradeInfo[2], participantNumber, i, amtShort)
         i += 1
     
