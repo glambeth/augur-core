@@ -458,5 +458,18 @@ def directShort(buyOrderID, amount):
     if ( CASH.balance(msg.sender) < amtShort - amtShort*tradeInfo.get_price(buyOrderID) ):
         return(-2)
     
+    #send cash to market
+    CASH.send(tradeInfo[2], amtShort - amtShort*tradeInfo.get_price(buyOrderID))
+    
+    #get shares of everything except the outcome you're shorting
+    numEvents = MARKETS.getNumEvents(tradeInfo[2])
+    events = MARKETS.getMarketEvents(tradeInfo[2], outitems=numEvents)
+    numOutcomes = MARKETS.getMarketNumOutcomes(tradeInfo[2])
+    i = 0;
+    while i <= numEvents:
+        #ensure you're not buying the outcome you're trying to short
+        if (n[8] != 
+        
+
         
     
