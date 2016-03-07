@@ -462,13 +462,25 @@ def directShort(buyOrderID, amount):
     CASH.send(tradeInfo[2], amtShort - amtShort*tradeInfo.get_price(buyOrderID))
     
     #get shares of everything except the outcome you're shorting
-    numEvents = MARKETS.getNumEvents(tradeInfo[2])
     events = MARKETS.getMarketEvents(tradeInfo[2], outitems=numEvents)
     numOutcomes = MARKETS.getMarketNumOutcomes(tradeInfo[2])
+    participantNumber = MARKETS.getParticipantNumber(tradeInfo[2], tx.origin)
     i = 0;
-    while i <= numEvents:
-        #ensure you're not buying the outcome you're trying to short
-        if (n[8] != 
+    
+    # if participant doesn't exist in market, add them
+    if(tx.origin != MARKETS.getParticipantID(tradeInfo[2], participantNumber)):
+        participantNumber = MARKETS.addParticipant(tradeInfo[2], tx.origin)
+        
+    #move the shares
+    while i <= numOutcomes:
+        #just need to make sure you're not buying the  one you're trying to short.
+        if (its the one you need to short): 
+            continue
+        MARKETS.modifyShares(tradeInfo[2], i, amtShort)
+        MARKETS.modifyParticipantShares(branch, tradeInfo[2], participantNumber, i, amtShort)
+        i += 1
+    
+    return(1)
         
 
         
